@@ -1,5 +1,5 @@
 '''
-Takes a set of emails and checks if they might be valid. The follow checks have to occur:
+Takes a set of emails and checks if they might be valid. The following checks have to occur:
 Check for exactly 1 "@"
 Check for no charachters other than numbers, letters and dots
 Check if prefix is not empty
