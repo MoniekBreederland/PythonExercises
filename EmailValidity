@@ -1,0 +1,66 @@
+'''
+Takes a set of emails and checks if they might be valid. The follow checks have to occur:
+Check for exactly 1 "@"
+Check for no charachters other than numbers, letters and dots
+Check if prefix is not empty
+Check if domain is not empty
+Check if domain contains exactly one dot
+'''
+
+def has_invalid_characters(string):
+    valid = "abcdefghijklmnopqrstuvwxyz0123456789."
+   
+    for character in string:
+        if character not in valid:
+            return True
+    return False
+
+def is_valid(email):
+
+    if email.count("@") != 1:
+        return False
+        
+    prefix, domain = email.split("@")
+    
+    if len(prefix) == 0:
+        return False
+    
+    if domain.count(".") != 1:
+        return False
+        
+    domain_name, extension = domain.split(".")
+    
+    if len(domain_name) == 0 or len(extension) == 0:
+        return False
+        
+    if has_invalid_characters(domain) == True:
+        return False
+    
+    if has_invalid_characters(prefix) == True:
+        return False
+     
+    return True
+    
+
+emails = [
+    "test@example.com",
+    "valid@gmail.com",
+    "invalid@gmail",
+    "invalid",
+    "not an email",
+    "invalid@email",
+    "!@/",
+    "test@@example.com",
+    "test@.com",
+    "test@site.",
+    "@example.com",
+    "an.example@test",
+    "te#st@example.com",
+    "test@exam!ple.com"
+]
+
+for email in emails:
+    if is_valid(email) == True:
+        print(email + " is valid")
+    else:
+        print(email + " is invalid")
