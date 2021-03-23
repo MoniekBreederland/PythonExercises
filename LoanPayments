@@ -1,0 +1,29 @@
+''' 
+To recap the problem: we are searching for the smallest monthly payment such that we can pay off the entire balance within a year.
+Write a program that uses bisection search to find the smallest monthly payment to the cent such that we can pay off the debt within a year. 
+''' 
+
+balance = float(input("Starting balance: "))
+annualInterestRate = float(input("Annual interest rate: "))
+
+monthlyInterest = annualInterestRate / 12
+newbalance = balance
+
+lower = balance / 12
+upper = (balance + balance*annualInterestRate)/12
+
+while abs(newbalance) > 0.01:
+    months = 12
+    newbalance = balance
+    monthlyPayment = (lower+upper) / 2
+    while months > 0:
+        unpaidbalance = newbalance - monthlyPayment
+        interest = monthlyInterest * unpaidbalance
+        newbalance = unpaidbalance + interest
+        months -= 1
+    if newbalance > 0.01:
+        lower = monthlyPayment
+    elif newbalance < -0.01:
+        upper = monthlyPayment
+    else:
+        print("Lowest payment: " + str(round(monthlyPayment,2)))
