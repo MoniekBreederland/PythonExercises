@@ -1,7 +1,11 @@
 # The 6.00 Word Game
 
 '''
-Create a Scrabble-like word game. A list of valid English words is provided in a .txt file
+Create a Scrabble-like word game. A list of valid English words is provided in a .txt file.
+The user gives input on whether to deal a new hand, replay the last hand, or end the game.
+When a hand is dealt, the user gives a word made from the letters in their hand. If it is valid, it is scored and the user can then give another word with the remaining letters.
+This continues until there are no more letters, or the user ends the game by typing '.'
+A final score is then given.
 '''
 
 import random
